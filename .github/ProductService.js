@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 export class Product{
     constructor(name,description,price,tags,images,favoriteCount=0){
@@ -31,7 +31,7 @@ export class ElectricProduct extends Product{
 
 }
 
-export async function getProductList(page=1,pageSize=10,orderBy=recent,keyword){
+export async function getProductList(page=1,pageSize=10,orderBy="recent",keyword){
     const params = new URLSearchParams({page:page,pageSize:pageSize,orderBy:orderBy});
     const baseurl =`https://panda-market-api-crud.vercel.app/docs/#/Product/ListProducts${params}`;
         let result=await axios.get(baseurl,{
